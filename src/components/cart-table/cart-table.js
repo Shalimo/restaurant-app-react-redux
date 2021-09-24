@@ -26,9 +26,10 @@ const CartTable = ({items, removeFromCart}) => {
     );
 };
 
-const mapStateToProps = ({items}) => {
+const mapStateToProps = ({items, countOfCards}) => {
     return {
-        items
+        items,
+        countOfCards
     }
 };
 

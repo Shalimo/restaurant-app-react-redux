@@ -2,7 +2,8 @@ const initialState = {
     menu: [],
     loading: true,
     error: false,
-    items: []
+    items: [],
+    countCards: 0
 }
 
 const reducer = (state = initialState, action) => {
@@ -42,7 +43,8 @@ const reducer = (state = initialState, action) => {
                 items: [
                     ...state.items,
                     newItem
-                ]
+                ],
+                countCards: state.items.length + 1
             };
         case 'ITEM_REMOVE_FROM_CART':
             const idx = action.payload;
@@ -53,8 +55,14 @@ const reducer = (state = initialState, action) => {
                 items: [
                     ...state.items.slice(0, itemIndex),
                     ...state.items.slice(itemIndex + 1)
-                ]
-            }
+                ],
+                countCards: state.items.length - 1
+            };
+            case 'COUNT_OF_CARDS':
+                return {
+                    ...state,
+                    countCards: state.items.length 
+                }
         default:
             return state;
     }

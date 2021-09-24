@@ -31,10 +31,17 @@ const removeFromCart = (id) => {
     }
 }
 
+const countOfCards = () => {
+    return {
+        type: "COUNT_OF_CARDS",
+    }
+}
+
 export {
     menuLoaded,
     menuRequested,
     menuError,
     addedToCart,
-    removeFromCart
+    removeFromCart,
+    countOfCards
 };
