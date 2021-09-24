@@ -24,9 +24,17 @@ const addedToCart = (id) => {
     }
 }
 
+const removeFromCart = (id) => {
+    return {
+        type: "ITEM_REMOVE_FROM_CART",
+        payload: id
+    }
+}
+
 export {
     menuLoaded,
     menuRequested,
     menuError,
-    addedToCart
+    addedToCart,
+    removeFromCart
 };

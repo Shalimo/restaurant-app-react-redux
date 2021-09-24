@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { removeFromCart } from '../../actions';
 import './cart-table.scss';
 
-const CartTable = ({items, onDelete}) => {
+const CartTable = ({items, removeFromCart}) => {
     return (
         <>
             <div className="cart__title">Ваш заказ:</div>
@@ -15,7 +16,7 @@ const CartTable = ({items, onDelete}) => {
                                 <img src={url} className="cart__item-img" alt={title}></img>
                                 <div className="cart__item-title">{title}</div>
                                 <div className="cart__item-price">{price}$</div>
-                                <div onClick={() => onDelete(id)} className="cart__close">&times;</div>
+                                <div onClick={() => removeFromCart(id)} className="cart__close">&times;</div>
                             </div>
                         )
                     })
@@ -31,10 +32,10 @@ const mapStateToProps = ({items}) => {
     }
 };
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        onDelete: (id) => {
-            console.log(`Удалили ${id}`);
+        removeFromCart:(id) => {
+            dispatch(removeFromCart(id))
         }
     }
 }
